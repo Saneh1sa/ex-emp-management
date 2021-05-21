@@ -1,14 +1,18 @@
 package jp.co.sample.domain;
 
+/**
+ * 管理者情報
+ * ＠author Yuta.Sanehisa
+ */
 public class Administrator {
-	
-	/**
-	 * 管理者情報
-	 * ＠author Yuta.Sanehisa
-	 */
+	/** ID */
 	private Integer id;
+	
+	/** 名前 */
 	private String name;
+	/** メールアドレス */
 	private String mailAddress;
+	/** パスワード */
 	private String password;
 	
 	@Override
