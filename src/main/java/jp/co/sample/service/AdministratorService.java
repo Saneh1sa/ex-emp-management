@@ -20,6 +20,6 @@ public class AdministratorService {
 	private AdministratorRepository administratorRepository;
 	
 	public void insert(Administrator administrator) {
-		String insertSql = "INSERT INTO administrators SET "
+		String insertSql = "INSERT INTO administrators SET ";
 	}
 }
