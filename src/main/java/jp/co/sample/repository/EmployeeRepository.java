@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.sample.domain.Employee;
 
 /**
- * 従業員テーブルを操作するリポジトリ
+ * 従業員テーブルを操作するリポジトリ.
  * 
  * @author yuta.sanehisa
  *
@@ -35,13 +35,13 @@ public class EmployeeRepository {
 		employee.setImage(rs.getString("image"));
 		employee.setGender(rs.getString("gender"));
 		employee.setHireDate(rs.getDate("hireDate"));
-		employee.setMailAddress(rs.getString("mailAddress"));
-		employee.setZipCode(rs.getString("zipCode"));
+		employee.setMailAddress(rs.getString("mail_address"));
+		employee.setZipCode(rs.getString("zip_code"));
 		employee.setAddress(rs.getString("address"));
 		employee.setTelephone(rs.getString("telephone"));
 		employee.setSalary(rs.getInt("salary"));
 		employee.setCharacteristics(rs.getString("characteristics"));
-		employee.setDependentsCount(rs.getInt("departmentsCount"));
+		employee.setDependentsCount(rs.getInt("departments_count"));
 		return employee;
 	};
 
@@ -51,7 +51,7 @@ public class EmployeeRepository {
 	 * @return 全従業員一覧 従業員が存在しない場合はサイズ0件の従業員一覧を返します.
 	 */
 	public List<Employee> findAll() {
-		String findAllSql = "SELECT * FROM employees ORDER BY hire_date DESC";
+		String findAllSql = "SELECT id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count FROM employees ORDER BY hire_date DESC";
 
 		List<Employee> employeeList = template.query(findAllSql, Employee_ROW_MAPPER);
 
@@ -61,11 +61,11 @@ public class EmployeeRepository {
 	/**
 	 * 主キー検索を行います.
 	 * 
-	 * @param id
-	 * @return 従業員情報(検索されなかった場合は例外が発生します.)
+	 * @param id ID
+	 * @return　employee 従業員情報(検索されなかった場合は例外が発生します.)
 	 */
 	public Employee load(Integer id) {
-		String loadSql = "SELECT * FROM employees WHERE id = :id";
+		String loadSql = "SELECT id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count FROM employees WHERE id = :id";
 
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
@@ -75,9 +75,9 @@ public class EmployeeRepository {
 	}
 
 	/**
-	 * 従業員情報を更新します。
+	 * 従業員情報を更新します.
 	 * 
-	 * @param employee
+	 * @param employee 従業員情報
 	 */
 	public void update(Employee employee) {
         

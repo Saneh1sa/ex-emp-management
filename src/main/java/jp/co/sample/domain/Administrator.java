@@ -1,7 +1,8 @@
 package jp.co.sample.domain;
 
 /**
- * 管理者情報
+ * 管理者情報.
+ * 
  * ＠author Yuta.Sanehisa
  */
 public class Administrator {
@@ -15,6 +16,23 @@ public class Administrator {
 	/** パスワード */
 	private String password;
 	
+	/** 引数なしコンストラクタ */
+	public Administrator() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	/** 引数ありコンストラクタ */
+	public Administrator(Integer id, String name, String mailAddress, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.mailAddress = mailAddress;
+		this.password = password;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password

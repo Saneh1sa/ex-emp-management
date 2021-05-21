@@ -1,7 +1,8 @@
 package jp.co.sample.domain;
 
 /**
- * 従業員情報
+ * 従業員情報.
+ * 
  * @author Yuta.Sanehisa
  */
 public class Employee {

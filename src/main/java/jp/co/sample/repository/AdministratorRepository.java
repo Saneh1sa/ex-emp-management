@@ -14,7 +14,8 @@ import jp.co.sample.domain.Administrator;
 
 
 /**
- * 管理者テーブルを操作するリポジトリ
+ * 管理者テーブルを操作するリポジトリ.
+ * 
  * @author yuta.sanehisa
  *
  */
@@ -39,25 +40,27 @@ public class AdministratorRepository {
 	
 	/**
 	 * 管理者情報を挿入する.
-	 * @param administrator
+	 * 
+	 * @param administrator 管理者情報
 	 */
 	public void insert(Administrator administrator) {
 		
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 		
-		String insertSql = "INSERT INTO administrators(name, mail_address, password) VALUES(:name, :mail_address, :password)";
+		String insertSql = "INSERT INTO administrators(name, mail_address, password) VALUES(:name, :mailAddress, :password)";
 		
 		template.update(insertSql, param);
 	}
 	
 	/**
 	 * メールアドレスとパスワードから管理者情報を取得する.
-	 * @param mailAddress
-	 * @param password
+	 * 
+	 * @param mailAddress メールアドレス
+	 * @param password　パスワード
 	 * @return　管理者情報を取ってくる(1件も存在しない場合はnullを返す.)
 	 */
 	public Administrator findByMailAddressAndPassword(String mailAddress,String password){
-		String sql = "SELECT id,name,mail_address,password FROM administrators WHERE mail_address = :mailAddress && password = :password ORDER BY id";
+		String sql = "SELECT id,name,mail_address,password FROM administrators WHERE mail_address = :mailAddress && password = :password";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);	
 		

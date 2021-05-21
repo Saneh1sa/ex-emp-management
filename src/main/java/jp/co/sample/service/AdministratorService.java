@@ -8,7 +8,8 @@ import jp.co.sample.domain.Administrator;
 import jp.co.sample.repository.AdministratorRepository;
 
 /**
- * 管理者情報を操作するサービス
+ * 管理者情報を操作するサービス.
+ * 
  * @author yuta.sanehisa
  *
  */
@@ -19,7 +20,12 @@ public class AdministratorService {
 	@Autowired
 	private AdministratorRepository administratorRepository;
 	
+	/**
+	 * 管理者情報を挿入する.(AdministratorRepositoryのメソッドを呼び出す)
+	 * 
+	 * @param administrator
+	 */
 	public void insert(Administrator administrator) {
-		String insertSql = "INSERT INTO administrators SET ";
+		administratorRepository.insert(administrator);
 	}
 }
